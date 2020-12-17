@@ -19,7 +19,7 @@ class Itens:
         for json_entry in self.json_dict:
 
             #print(json_entry['dia'], self.tresh_minimum_date)
-            if(self.selled_in_a_valid_date(json_entry['dia'])):
+            if(self.selled_in_a_valid_date(json_entry['dia'])): #optei por adicionar os itens na lista criada ja filtrando os que não estavam na data especificada
                 item = Item(json_entry)
                 item_position = self.is_this_item_in_the_list(item)
                 if(item_position == -1):
@@ -28,7 +28,7 @@ class Itens:
                     self.item_list[item_position].amount += item.amount
                     self.item_list[item_position].total += item.total
 
-    def is_this_item_in_the_list(self,item):
+    def is_this_item_in_the_list(self,item): #se o tem estiver na lista retorna a posição dele, se não estiver retorna -1
         i = 0
         for it in self.item_list:
             if it.name == item.name:
